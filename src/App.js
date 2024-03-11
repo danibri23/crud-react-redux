@@ -1,17 +1,20 @@
 import './App.css';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { TaskForm } from './components/TaskForm';
 import { TaskList } from './components/TaskList';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
 
-  const tasksState = useSelector((state) => state.tasks)
-
   return (
     <div className="App">
-      <h1>Hola Mundo !</h1>
-      <TaskForm />
-      <TaskList />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TaskList />} />
+          <Route path="/create-task" element={<TaskForm />} />
+          
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

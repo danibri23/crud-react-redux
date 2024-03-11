@@ -19,10 +19,15 @@ export const taskSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
-    
+    addTask: (state, action) => {
+      return [...state, action.payload]
+    },
+    deleteTask: (state, action) => {
+      return state.filter(task => task.id !== action.payload)
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {  } = taskSlice.actions
+export const { addTask, deleteTask } = taskSlice.actions
 export default taskSlice.reducer
