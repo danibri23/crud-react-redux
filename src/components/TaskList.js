@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTask, indexPosition } from "../features/tasks/taskSlice";
+import { deleteTask } from "../features/tasks/taskSlice";
 import { Link } from "react-router-dom";
-
+import ToogleButton from "./ToggleButton";
 
 export function TaskList() {
     const tasks = useSelector((state) => state.tasks)
@@ -11,7 +11,7 @@ export function TaskList() {
     const handleDelete = (id) => {
         dispatch(deleteTask(id))
     }
-    
+
     return (
         <div className="w-4/6">
             <header className="flex justify-between items-center py-4">
@@ -30,7 +30,10 @@ export function TaskList() {
                             </div>
                         </header>
                         <p>{task.description}</p>
-                        <p>{index + 1}</p>
+                        <div className="flex justify-between">
+                            <p>{index + 1}</p>
+                            <ToogleButton />
+                        </div>
                     </div>
                 ))}
             </div>
