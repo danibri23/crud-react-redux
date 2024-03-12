@@ -28,8 +28,8 @@ export const taskSlice = createSlice({
     updateTask: (state, action) => {
       return state.map(task => task.id === action.payload.id ? action.payload : task)
     }, 
-    stateCompleted: (state, action) => {
-      return state.map(task => task.id === action.payload.id ? {...task, completed: !task.completed} : task)
+    stateCompleted: (state, action) => {;
+      return state.map(task => task.id === action.payload ? {...task, completed: !task.completed} : task)
     }
   },
 })
