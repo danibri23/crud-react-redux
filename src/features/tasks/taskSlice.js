@@ -27,10 +27,13 @@ export const taskSlice = createSlice({
     },
     updateTask: (state, action) => {
       return state.map(task => task.id === action.payload.id ? action.payload : task)
+    }, 
+    stateCompleted: (state, action) => {
+      return state.map(task => task.id === action.payload.id ? {...task, completed: !task.completed} : task)
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTask, deleteTask, updateTask } = taskSlice.actions
+export const { addTask, deleteTask, updateTask, stateCompleted } = taskSlice.actions
 export default taskSlice.reducer

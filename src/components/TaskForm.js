@@ -34,6 +34,7 @@ export function TaskForm() {
             dispatch(addTask({
                 ...task,
                 id: uuid(),
+                completed: false
             }))
         }  
         navigate('/')
@@ -54,7 +55,6 @@ export function TaskForm() {
                 <textarea className="w-full p-2 rounded-md bg-zinc-600 mb-2" name="description" placeholder="Descripcion" value={task.description} onChange={handleInputChange}/>
             </label>
             <button className="bg-blue-600 px-2 py-1" type="submit">Añadir tarea</button>
-            
         </form>
     );
   }

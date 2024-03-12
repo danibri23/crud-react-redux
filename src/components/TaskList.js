@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTask } from "../features/tasks/taskSlice";
+import { deleteTask, stateCompleted } from "../features/tasks/taskSlice";
 import { Link } from "react-router-dom";
 import ToogleButton from "./ToggleButton";
 
@@ -10,6 +9,10 @@ export function TaskList() {
 
     const handleDelete = (id) => {
         dispatch(deleteTask(id))
+    }
+
+    const handleCompleted = (id) => {
+        dispatch(stateCompleted({ id: id }));
     }
 
     return (
@@ -32,7 +35,7 @@ export function TaskList() {
                         <p>{task.description}</p>
                         <div className="flex justify-between">
                             <p>{index + 1}</p>
-                            <ToogleButton />
+                            <ToogleButton enabled={task.completed} onChange={() => handleCompleted(task.id)} />
                         </div>
                     </div>
                 ))}
