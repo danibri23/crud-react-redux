@@ -12,20 +12,26 @@ export function TaskList() {
     }
 
     return (
-        <div>
-            <header>
-                <h1>Total de tareas: {tasks.length}</h1>
-                <Link to="/create-task">Crear tarea</Link>
-
+        <div className="w-4/6">
+            <header className="flex justify-between items-center py-4">
+                <h1 className="text-lg font-bold">Total de tareas: {tasks.length}</h1>
+                <Link to="/create-task" className="bg-blue-600 px-2 py-1 rounded-md text-sm">Crear tarea</Link>
             </header>
-            {tasks.map((task) => (
-                <div key={task.id}>
-                    <h3>{task.title}</h3>
-                    <p>{task.description}</p>
-                    <button onClick={()=> handleDelete(task.id)}>Eliminar</button>
-                    <Link to={`/edit-task/${task.id}`}>Editar</Link>
-                </div>
-            ))}
+
+            <div className="grid grid-cols-3 gap-3">
+                {tasks.map((task) => (
+                    <div className="bg-neutral-800 p-4 rounded-md" key={task.id}>
+                        <header className="flex justify-between">
+                            <h3 className="text-lg font-bold">{task.title}</h3>
+                            <div className="flex gap-x-2">
+                                <Link className="bg-zinc-600 px-2 py-1 text-xs rounded-md self-center" to={`/edit-task/${task.id}`}>Editar</Link>
+                                <button className="bg-red-500 px-2 py-1 text-xs rounded-md" onClick={()=> handleDelete(task.id)}>Eliminar</button>
+                            </div>
+                        </header>
+                        <p>{task.description}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
