@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState =[
         {
-        id: 1,
+        id: '1',
         title: 'Prueba 1',
         description: 'Probando desde la task 1',
         completed: false,
         },
         {
-        id: 2,
+        id: '2',
         title: 'Prueba 2',
         description: 'Probando desde la task 2',
         completed: false,
@@ -25,9 +25,12 @@ export const taskSlice = createSlice({
     deleteTask: (state, action) => {
       return state.filter(task => task.id !== action.payload)
     },
+    updateTask: (state, action) => {
+      console.log(action);
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTask, deleteTask } = taskSlice.actions
+export const { addTask, deleteTask, updateTask } = taskSlice.actions
 export default taskSlice.reducer
