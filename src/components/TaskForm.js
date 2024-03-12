@@ -49,7 +49,7 @@ export function TaskForm() {
         <form onSubmit={handleSubmit} className="bg-zinc-800 max-w-sm p-4">
             <label className="block text-sm font-bold">Tareas:</label>
             <input className="w-full p-2 rounded-md bg-zinc-600 mb-2" type="text" name="title" placeholder="Titulo" value={task.title} onChange={handleInputChange}/>
-            <label className="block text-sm font-bold">
+            <label className="block text-sm ">
                 <textarea className="w-full p-2 rounded-md bg-zinc-600 mb-2" name="description" placeholder="Descripcion" value={task.description} onChange={handleInputChange}/>
             </label>
             <button className="bg-blue-600 px-2 py-1" type="submit">Añadir tarea</button>

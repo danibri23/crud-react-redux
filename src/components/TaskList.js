@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTask } from "../features/tasks/taskSlice";
+import { deleteTask, indexPosition } from "../features/tasks/taskSlice";
 import { Link } from "react-router-dom";
 
 
@@ -10,7 +11,7 @@ export function TaskList() {
     const handleDelete = (id) => {
         dispatch(deleteTask(id))
     }
-
+    
     return (
         <div className="w-4/6">
             <header className="flex justify-between items-center py-4">
@@ -19,7 +20,7 @@ export function TaskList() {
             </header>
 
             <div className="grid grid-cols-3 gap-3">
-                {tasks.map((task) => (
+                {tasks.map((task, index) => (
                     <div className="bg-neutral-800 p-4 rounded-md" key={task.id}>
                         <header className="flex justify-between">
                             <h3 className="text-lg font-bold">{task.title}</h3>
@@ -29,6 +30,7 @@ export function TaskList() {
                             </div>
                         </header>
                         <p>{task.description}</p>
+                        <p>{index + 1}</p>
                     </div>
                 ))}
             </div>
